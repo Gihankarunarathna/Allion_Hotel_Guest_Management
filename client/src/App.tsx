@@ -32,8 +32,4 @@ const App: React.FC = () => {
   );
 };
 
-<<<<<<< HEAD
 export default App;
-=======
-export default App;
->>>>>>> cab3ed069c556caa2d343c9b83117c477c5a7828
