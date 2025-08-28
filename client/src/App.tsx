@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import GuestsList from "./pages/GuestsList";
 import GuestDetail from "./pages/GuestDetail";
 import AddGuest from "./pages/AddGuest";
@@ -7,7 +7,7 @@ import Header from "./components/Header";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="flex flex-col min-h-screen">
         {/* Header */}
         <Header />
@@ -15,10 +15,10 @@ const App: React.FC = () => {
         {/* Main content */}
         <main className="flex-grow container mx-auto p-4">
           <Routes>
-            <Route path="/" element={<Navigate to="/guests" />} />
+            <Route path="/" element={<Navigate to="/guests" replace />} />
             <Route path="/guests" element={<GuestsList />} />
+            <Route path="/guests/new" element={<AddGuest />} />
             <Route path="/guests/:id" element={<GuestDetail />} />
-            <Route path="/add" element={<AddGuest />} />
             <Route path="*" element={<p>Page not found</p>} />
           </Routes>
         </main>
@@ -28,7 +28,7 @@ const App: React.FC = () => {
           © 2025 Hotel Guest Management. All rights reserved.
         </footer>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 
